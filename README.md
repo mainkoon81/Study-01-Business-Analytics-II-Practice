@@ -8,7 +8,6 @@ A relation means structure. Relational Database(SQL) is suitable for realtime cr
 Hadoop splits the data up and stores it across the collection of machines(a cluster) then processes the data in place **where it's actually stored(within the cluster)** rather than retrieving the data from a central server. Of course we can add more machines to the cluster as the amount of the data we storing grows(machines in the cluster is typically `mid-range servers`).
  - MapReduce is for processing
  - HDFS is for storing
-<img src="https://user-imagSQL is suitable for realtime crud(create/read/.githubusercontent.com/31917400/44551518-5663b580-a71f-11e8-82dc-06ef1678a83c.jpg" />
 
 > Hadoop_EcoSystem:
 <img src="https://user-images.githubusercontent.com/31917400/44554202-f7566e80-a727-11e8-862c-a3a2d034549c.jpg" />
