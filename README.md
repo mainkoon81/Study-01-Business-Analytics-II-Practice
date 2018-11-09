@@ -1,5 +1,5 @@
 # Study-Business-Analytics-II-Practice
-HDFS, MapReduce
+HDFS, MapReduce, Apache Spark PostgreSQL
 
 ---------------------------------------------------------------------------------------------------------------------------
 ### Intro to MapReduce and Hadoop
