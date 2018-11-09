@@ -1,8 +1,11 @@
 # Study-Business-Analytics-II-Practice
-HDFS, MapReduce, Apache Spark PostgreSQL
+HDFS, MapReduce, Apache Spark, PostgreSQL
 
 ---------------------------------------------------------------------------------------------------------------------------
-A relation means structure. Relational Database(SQL) is suitable for realtime crud(create/read/update/delete) operation while a big data stack(Hadoop) stores both structured/unstructured data without need of relations, consistency of format, etc. 
+> A relation means structure. Relational Database(SQL) is suitable for realtime crud(create/read/update/delete) operation while a big data stack(Hadoop) has a "create once/read many" type of file system, storing both structured/unstructured data without need of relations, consistency of format, etc. 
+
+
+
 
 ### Intro to MapReduce and Hadoop
 Hadoop splits the data up and stores it across the collection of machines(a cluster) then processes the data in place **where it's actually stored(within the cluster)** rather than retrieving the data from a central server. Of course we can add more machines to the cluster as the amount of the data we storing grows(machines in the cluster is typically `mid-range servers`).
