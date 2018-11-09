@@ -27,7 +27,7 @@ See what's going on behind the scenes when you store the data
  - Running the actual **Map & Reduce** task is handled by a daemon called the **task-tracker**, a software running on each of these nodes. Since the task-tracker(daemon) runs on the same machine as the Data-Node, the Hadoop framework will be able to have the **Map_tasks** work directly on the pieces of data sorted on that machine which saves lots of network traffic. 
  - By default, Hadoop uses an **HDFS block** as the input split for each Mapper. It'll try to make sure a **Mapper** works on the data on the same machine. But what about Reducer??
  
-> [failure]__
+> [failure]
  - In case of Data-Node-failure, Hadoop replicates each block 3 times. so if a single node fails, it's ok coz we have 2 other copies of the block on other nodes. 
  - The Name-Node is smart enough to rearrange to have those blocks re-replicated on the cluster. but what if the Name-Node fails, burst into flame? 
    - **data, entire cluster become inaccessible**
@@ -57,7 +57,7 @@ So...in summary,
 
 
 
-### write Mapper
+### Write Mapper
  - Check if we have our input data in HDFS: `hadoop fs -ls [directory]`
  - Check if we have our output data in HDFS: `hadoop fs -ls [directory]` 
  - Check our Mapper, Reducer code file: `ls`
