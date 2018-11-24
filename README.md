@@ -18,40 +18,42 @@ See what's going on behind the scenes when you store the data
 <img src="https://user-images.githubusercontent.com/31917400/44589197-ccaff880-a7af-11e8-8989-9bb3e89718db.jpg" />
 
  - When a file is loaded into HDFS, it's splittd into chunks called **blocks**. Each block is still big(the default is **64mb**) and given an unique name such as **blk_1, blk_2..**. For example, assuming my file is 150 mb, the first and second block is 64mb, 64mb, then the third block is 22mb. As the file is uploaded, each block will get stored on one **node** in the cluster. 
-   - There is a software called **Daemon** running on each of the machine in the cluster and we call them the **Data-Node**(slave). 
-   - We need to know which blocks make up the original file. That is handled by separate machine, running Daemon called the **Name-Node**(master).
-   - The information is stored on the **Name-Node** is called **metadata**.
+   - There is a software called **Daemon** running on each of the machine in the cluster and we call them the **DataNode**(slave). 
+   - We need to know which blocks make up the original file. That is handled by separate machine, running Daemon called the **NameNode**(master).
+   - The information is stored on the **NameNode** is called **metadata**.
    
 > [Daemon]
- - `When running MapReduce job, we submit the job to what's called the **Job-tracker** which splits the work into **Mappers & Reducers**(running on the other cluster nodes).` ????????
- - Running the `actual Map & Reduce task` is handled by a **task-tracker**(Daemon), a software running on each of these nodes. Since the task-tracker runs on the same machine as the Data-Node, the Hadoop framework will be able to have the **Map_tasks** work directly on the pieces of data sorted on that machine which saves lots of network traffic. 
- - By default, Hadoop uses an **HDFS block** as the input-split for each Mapper. It'll try to make sure a [Mapper] works on the data on the same machine. `But what about Reducer??`
+ - Before running `MapReduce`, we submit the job to what's called the **Job-tracker**(Namenode) which splits the work into **Mappers & Reducers**(running on Datanodes).
+ - `Running the actual Map` and `Reducing task` is handled by a **task-tracker**(Daemon), a software running on each of these nodes. Since the **task-tracker** runs on the same machine as the Datanode, the Hadoop framework will be able to have the **Map_tasks** work directly on the pieces of data sorted on that machine which saves lots of network traffic. 
+ - By default, Hadoop uses an **HDFS block** as the input-split for each Mapper. It'll try to make sure Mappers work on the data on the same machine. Once HDFS splits the data for each Mapper or Datanode, lets Mappers work in parallel to respond to their master coz this broken pieces are all from one data.   
  
 > [failure]
  - In case of Data-Node-failure, Hadoop replicates each block **3 times**. so if a single node fails, it's ok coz we have 2 other copies of the block on other nodes. 
- - The **Name-Node** is smart enough to rearrange to have those blocks re-replicated on the cluster. but what if the Name-Node fails, burst into flame? 
+ - The **Namenode** is smart enough to rearrange to have those blocks re-replicated on the cluster. but what if the Name-Node fails, burst into flame? 
    - **data, entire cluster become inaccessible**.
    - **we lost the metadata forever** (we still have blocks but we can't see which block belongs to which file).
-   - That's why we configure our **Name-Node** not only on its own hard drive, but also somewhere on a network file system(NFS) which is a method of mounting a remote disk. As a better alternative, people configure two **Name-Nodes** so that it is not a single point of failure in most production clusters.
+   - That's why we configure our **Namenode** not only on its own hard drive, but also somewhere on a network file system(NFS) which is a method of mounting a remote disk. As a better alternative, people configure two **Namenodes** so that it is not a single point of failure in most production clusters.
      - Active Name-Node
      - Standby Name-Node 
      
 That way, our cluster can keep running.
 
-> [MapReduce]: See how the data is processed.
+> [MapReduce]: data processing.
+ - Every Datanode(server) has a Mapper(finding) and Reducer(processing). Let's say, we have a big data with massive rowssssss. And we have 5 servers.
+ - Suppose we have a task: `Counting how many times the word 'korea' appears!` 
+ - The Namenode(my laptop with **job-tracker**) first starts [Mappers], i.e, the Namenode first requests datanodes(servers) run their Mappers(for example "find korea and record"!) then Mappers in each Datanode write a new file(`mapper_output.txt`) whenever they find things. Since we have 5 servers(Datanodes), we would get 5 `mapper_output.txt` files...and Done!    
+ - The Namenode(my laptop with **job-tracker**) then starts [Reducers], i.e, the Namenode requests datanodes(servers) run their Reducers(for example, "count the record"!) then Reducers in each Datanode read the new file(`mapper_output.txt`) and do some calculation and output the final answer. 
  - Historically, we use an associative array called **Hash_table** that consists of **key** and **value**. The problem is that if we run some terabyte of data...it'll take too long time and run out of memory holding the hash_table. 
  - So...our [Mappers] take the ledgers, break it into chunks, give each chunk to one of our [Mappers]. **All Mappers at the same time are 1.working each of small fraction of the data, writing `index cards`, 2.piling up hash_tables so that cards for the `same key` go in the same pile.** 
- - Once the Mappers have finished, our [Reducers] collect these sets of card and we tell our Reducers which key they are responsible for. The [Reducers] go to the Mappers and retrieve the pile of cards for their keys, then collect all the small piles and add up to larger piles. This is followed by going through(alphabetical order) the piles one at a time and process in some way all values from all the card on the pile.
+ - Once the Mappers have finished, our [Reducers] collect these sets of card(for example .txt file) and the Master(Namenode) tells our Reducers which key they are responsible for. The [Reducers] go to the Mappers and retrieve the pile of cards for their keys, then collect all the small piles and add up to larger piles. This is followed by going through(alphabetical order) the piles one at a time and process in some way all values from all the card on the pile.
 <img src="https://user-images.githubusercontent.com/31917400/44621428-48886e80-a89e-11e8-9224-4247dde159c6.jpg" />
 
 So...in summary,
- - 1> [Mappers] are just little programs that each deals with a small data, working in parallel. We call their outputs as **intermediate_records** and writing them on the **index cards**(Hadoop deals with all data in the form of **key** and **value**). 
+ - 1> [Mappers] are just little programs(coded algorithm) that each deals with a small data, working in parallel. We call their outputs as **intermediate_records** and writing them on the **index cards**(Hadoop deals with all data in the form of **key** and **value**). 
  - 2> Then **Shuffle and Sort** takes place.
    - Shuffle: the movement of the intermediate records from the Mappers to the Reducers
    - Sort: Reducers organize these sets of records into sorted order (Hadoop takes care of the Shuffle and Sort phase. You do not have to sort the keys in your reducer code, you get them in already sorted order). 
- - 3> Finally, each [Reducer] works on one set of records(one pile of cards) at a time, gets the key and the list of all the values, then sort our final result .. how to get our final result in a sorted order?
-   - `need only one reducer.`?
-   - `need an extra step to merge the result.`?
+ - 3> Finally, each [Reducer] works on one set of records(one pile of cards) at a time, gets the key and the list of all the values, then sort(produce) our final result.
 
 
 
