@@ -59,7 +59,7 @@ So...in summary,
 
 
 
-### Write Mapper
+### Example(writing mapreduce engine) 
  - Check if we have our input data in HDFS: `hadoop fs -ls [directory]`
  - Check if we have our output data in HDFS: `hadoop fs -ls [directory]` 
  - Check our Mapper, Reducer code file: `ls`
