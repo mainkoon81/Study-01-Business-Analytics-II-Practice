@@ -119,5 +119,24 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 
 
 
+-------------------------------------------------------------------------------------------------
+# Chapter 01. Data Modelling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
