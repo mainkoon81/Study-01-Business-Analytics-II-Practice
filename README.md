@@ -134,8 +134,15 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
    - HR should be able to assess the performance of sales staff
    - Marketing should be able to see the effect of different sales channels
    - Management should be able to monitor sales growth
-### Can we build a single database to support these activities? Are all of the above questions of the same nature? NOPE.
+ - Can we build a single database to support these activities? Are all of the above questions of the same nature? 
+ ## NOPE.
 <img src="https://user-images.githubusercontent.com/31917400/58917762-97adda80-871f-11e9-8114-6a340bb1e46d.jpg" />
+
+> Perspective - **Technical** 
+ - DWH is a `copy` of transaction data specifically **structured for** `query and analysis`. 
+ - DWH is subject-oriented(categorized by topic), integrated(coming from many sources), non-volatile(non-transient), time-variant(changing questions by time) collection of data in support of management's decisions.
+ - DWH is a system retrieving and consolidating data periodically from the source systems into a dimensional, normalized data store. It keeps years of history. It is typically updated in batches, not every time a transaction happens in the source system. 
+<img src="https://user-images.githubusercontent.com/31917400/58919046-97fca480-8724-11e9-91db-6c44fde98fa1.jpg" />
 
 
 
