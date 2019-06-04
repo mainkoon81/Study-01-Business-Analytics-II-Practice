@@ -126,7 +126,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 
 -------------------------------------------------------------------------------------------------
 # Chapter 02. Data WareHousing
-> Perspective - Business?(if you are in charge of a retailer’s data infrastructure?
+> Perspective - **Business** (if you are in charge of a retailer’s data infrastructure?
  - See some business activities:
    - Customers should be able to find goods & make orders
    - Inventory Staff should be able to stock, retrieve, and re-order goods
@@ -134,9 +134,9 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
    - HR should be able to assess the performance of sales staff
    - Marketing should be able to see the effect of different sales channels
    - Management should be able to monitor sales growth
+### Can I build a database to support these activities? Are all of the above questions of the same nature?
 
 
- 
 
 
 
