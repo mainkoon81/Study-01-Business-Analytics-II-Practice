@@ -154,6 +154,13 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
        - Record in quantifiable metrics: quantity, duration, rate,..(explaining events) 
      <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
 
+ - From **3NF** to **ETL** : `Naive ETL`
+   - Extract: Query the 3NF database
+   - Transform:
+     - JOIN tables
+     - Change data types
+     - Add new features
+   - Load: Insert them into Fact / Dimension tables
 
 
 
