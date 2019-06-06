@@ -126,7 +126,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 
 -------------------------------------------------------------------------------------------------
 # Chapter 02. Data WareHousing
-> Perspective - **Business** (if you are in charge of a retailer’s data infrastructure?
+> Perspective 01- **Business** (if you are in charge of a retailer’s data infrastructure?
  - See some business activities:
    - Customers should be able to find goods & make orders
    - Inventory Staff should be able to stock, retrieve, and re-order goods
@@ -138,13 +138,19 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
  ## NOPE.
 <img src="https://user-images.githubusercontent.com/31917400/58917762-97adda80-871f-11e9-8114-6a340bb1e46d.jpg" />
 
-> Perspective - **Technical** 
+> Perspective 02 - **Technical** 
  - DWH is a `copy` of transaction data specifically **structured for** `query and analysis`. 
  - DWH is subject-oriented(categorized by topic), integrated(coming from many sources), non-volatile(non-transient), time-variant(changing questions by time) collection of data in support of management's decisions.
  - DWH is a system retrieving and consolidating data periodically from the source systems into a dimensional, normalized data store. It keeps years of history. It is typically updated in batches, not every time a transaction happens in the source system. 
 <img src="https://user-images.githubusercontent.com/31917400/58919046-97fca480-8724-11e9-91db-6c44fde98fa1.jpg" />
 
+ - Now we store our tables after ETL into a dimensional model(for analytics). What's the dimensional, normalized store? 
+   - dimensional modeling has two goals 
+     - 1. easy to understand?
+     - 2. faster analytical query? 
+     <img src="https://user-images.githubusercontent.com/31917400/59024724-6978e980-884a-11e9-8eba-a67c27fff395.jpg" />
 
+   - Define which is `dimension` / `fact`
 
 
 
