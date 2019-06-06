@@ -151,7 +151,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
        - Context(Attribute): who(customer name?), when(data or time), where(store name?), what(product name?),..
      - Fact_table: 
        - Record in quantifiable metrics: quantity, duration, rate,..(explaining events) 
-     <img src="https://user-images.githubusercontent.com/31917400/59028258-050e5800-8853-11e9-83ec-cae5e72d11aa.jpg" />
+     <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
 
 
 
