@@ -140,7 +140,8 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
  - DWH is a system retrieving and consolidating data periodically from the source systems into a dimensional, normalized data store. It keeps years of history. It is typically updated in batches, not every time a transaction happens in the source system. 
 <img src="https://user-images.githubusercontent.com/31917400/58919046-97fca480-8724-11e9-91db-6c44fde98fa1.jpg" />
 
- - Now we store our tables after ETL into a **dimensional model**(for analytics). What's the dimensional, normalized store? 
+## Now we store our tables after ETL into a **dimensional model**(for analytics). 
+ - What's the dimensional, normalized store? 
    - **Dimensional modeling** has two goals 
      - 1. easy to understand?
      - 2. faster analytical query? 
