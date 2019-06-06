@@ -148,7 +148,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
    - dimensional modeling has two goals 
      - 1. easy to understand?
      - 2. faster analytical query? 
-     <img src="https://user-images.githubusercontent.com/31917400/59024724-6978e980-884a-11e9-8eba-a67c27fff395.jpg" />
+     <img src="https://user-images.githubusercontent.com/31917400/59024835-b230a280-884a-11e9-8493-b2595bfe0f68.jpg" />
 
    - Define which is `dimension` / `fact`
 
