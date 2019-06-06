@@ -55,10 +55,6 @@ So...in summary,
    - Sort: Reducers organize these sets of records into sorted order (Hadoop takes care of the Shuffle and Sort phase. You do not have to sort the keys in your reducer code, you get them in already sorted order). 
  - 3> Finally, each [Reducer] works on one set of records(one pile of cards) at a time, gets the key and the list of all the values, then sort(produce) our final result.
 
-
-
-
-
 ### Example(writing mapreduce engine) 
  - Check if we have our input data in HDFS: `hadoop fs -ls [directory]`
  - Check if we have our output data in HDFS: `hadoop fs -ls [directory]` 
@@ -145,12 +141,16 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 <img src="https://user-images.githubusercontent.com/31917400/58919046-97fca480-8724-11e9-91db-6c44fde98fa1.jpg" />
 
  - Now we store our tables after ETL into a dimensional model(for analytics). What's the dimensional, normalized store? 
-   - dimensional modeling has two goals 
+   - **Dimensional modeling** has two goals 
      - 1. easy to understand?
      - 2. faster analytical query? 
      <img src="https://user-images.githubusercontent.com/31917400/59024835-b230a280-884a-11e9-8493-b2595bfe0f68.jpg" />
 
-   - Define which is `dimension` / `fact`
+   - Love star? then define first which is `dimension` / `fact`. And create **Dimension_table** and **Fact_table**.
+     - Demension_table: 
+       - Context(Attribute): who(customer name?), what(product name?), where(store name?),..
+     - Fact_table: 
+       - Record in quantifiable metrics: quantity, duration, rate,..(explaining events) 
 
 
 
