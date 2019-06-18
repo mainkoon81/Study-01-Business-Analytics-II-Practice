@@ -148,13 +148,14 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
      <img src="https://user-images.githubusercontent.com/31917400/59024835-b230a280-884a-11e9-8493-b2595bfe0f68.jpg" />
 
    - Love star? then define first which is `dimension` / `fact`. And create **Dimension_table** and **Fact_table**.
-     - Demension_table: 
+     - Dimension_table: 
        - Context(Attribute): who(customer name?), when(data or time), where(store name?), what(product name?),..
      - Fact_table: 
-       - Record in quantifiable metrics: quantity, duration, rate,..(explaining events) 
+       - Record in quantifiable metrics: quantity, duration, rate,..(explaining events numerically)
+       - Ask "Is it additive?"... does it have meanings?
      <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
 
- - From **3NF** to **ETL** : `Naive ETL`
+ - Example: From **3NF** to **ETL** => `Naive ETL`
    - Extract: Query the 3NF database
    - Transform:
      - JOIN tables
@@ -162,10 +163,10 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
      - Add new features
    - Load: Insert them into Fact / Dimension tables
 
-## 1. Data Warehouse Architecture
+## 1. Data Warehouse Architecture theories
  - > 1.Kimball's Bus
  - > 2.Data Marts
- - > 3.Corporate Information Factory (CIF)
+ - > 3.Inmon's Corporate Information Factory (CIF)
  - > 4.Hybrid of [Bus + CIF]
 
    - Kimball's Bus
