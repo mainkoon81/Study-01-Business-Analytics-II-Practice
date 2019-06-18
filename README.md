@@ -155,7 +155,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
        - Ask "Is it additive?"... does it have meanings?
      <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
 
- - Example: From **3NF** to **ETL** => `Naive ETL`
+ - So how to move From **3NF** to **Star** => Use `Naive ETL`
    - Extract: Query the 3NF database
    - Transform:
      - JOIN tables
