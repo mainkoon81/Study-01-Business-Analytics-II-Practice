@@ -162,9 +162,13 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
      - Add new features
    - Load: Insert them into Fact / Dimension tables
 
+## 1. Data Warehouse Architecture
+ - > 1.Kimball's Bus
+ - > 2.Data Marts
+ - > 3.Corporate Information Factory (CIF)
+ - > 4.Hybrid of [Bus + CIF]
 
-
-
+   - Kimball's Bus
 
 
 
