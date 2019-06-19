@@ -187,6 +187,8 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 2. Independent Data Marts:
 <img src="https://user-images.githubusercontent.com/31917400/59797240-2fdac080-92d7-11e9-9e23-9296ef192814.jpg" />
 
+3. Inmon's CIF
+
 
 
 
