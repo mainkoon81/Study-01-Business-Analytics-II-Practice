@@ -181,6 +181,42 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
        - Produce diagnostic metadata.
      - Load: 
        - Structure and load the data into the dimensional data model. 
+ - It results in a common dimension data model shared by different departmentsss!! (so 'sales analytics' and the 'delivery analytics' will both use the same data dimension). 
+ - Data is kept at the atomic level, not at the aggregated level. 
+  
+2. Independent Data Marts:
+<img src="https://user-images.githubusercontent.com/31917400/59797240-2fdac080-92d7-11e9-9e23-9296ef192814.jpg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
