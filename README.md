@@ -169,7 +169,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
  - > 3.Inmon's Corporate Information Factory (CIF)
  - > 4.Hybrid of [Bus + CIF]
 
-1. Kimball's Bus: 
+## 1. Kimball's Bus: 
 <img src="https://user-images.githubusercontent.com/31917400/59796328-218ba500-92d5-11e9-9c97-37727eacae75.jpg" />
    
    - Use ETL => 
@@ -184,10 +184,10 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
  - It results in a common dimension data model shared by different departmentsss!! (so 'sales analytics' and the 'delivery analytics' will both use the same data dimension). 
  - Data is kept at the atomic level, not at the aggregated level. 
   
-2. Independent Data Marts:
+## 2. Independent Data Marts:
 <img src="https://user-images.githubusercontent.com/31917400/59797240-2fdac080-92d7-11e9-9e23-9296ef192814.jpg" />
 
-3. Inmon's CIF
+## 3. Inmon's CIF
 
 
 
