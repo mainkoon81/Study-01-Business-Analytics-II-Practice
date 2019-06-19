@@ -171,6 +171,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 
 1. Kimball's Bus: 
 <img src="https://user-images.githubusercontent.com/31917400/59796328-218ba500-92d5-11e9-9c97-37727eacae75.jpg" />
+   
    - Use ETL => 
      - Extract:
        - Get the data from its source
