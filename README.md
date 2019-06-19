@@ -188,6 +188,12 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 <img src="https://user-images.githubusercontent.com/31917400/59797240-2fdac080-92d7-11e9-9e23-9296ef192814.jpg" />
 
 ## 3. Inmon's CIF
+<img src="https://user-images.githubusercontent.com/31917400/59800291-23a63180-92de-11e9-98b0-ad98d5f1beec.jpg" />
+
+## 4. Bus + CIF
+<img src="https://user-images.githubusercontent.com/31917400/59800371-67993680-92de-11e9-8e4f-388021683bc2.jpg" />
+
+
 
 
 
