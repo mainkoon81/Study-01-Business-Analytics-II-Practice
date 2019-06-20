@@ -194,7 +194,13 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 <img src="https://user-images.githubusercontent.com/31917400/59800371-67993680-92de-11e9-8e4f-388021683bc2.jpg" />
 
 
-## Online Analytical Process (OLAP)
+## Online Analytical Process (OLAP) Cube
+<img src="https://user-images.githubusercontent.com/31917400/59842654-e0d07200-934e-11e9-83e9-cc7195e2a646.jpg" />
+
+It is an **aggregation** of a "fact metric" on a number of dimensions(by taking a combination of dimensions). It makes things easy to communicate to business users. 
+ - General Operations: `Roll-Up`, `Drill-Down`, `Slice&Dice`
+ 
+
 
 
 
