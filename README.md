@@ -152,7 +152,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
        - Context(Attribute): who(customer name?), when(data or time), where(store name?), what(product name?),..
      - Fact_table: 
        - Record in quantifiable metrics: quantity, duration, rate,..(explaining events numerically)
-       - Ask "Is it additive?"... does it have meanings?
+       - Ask "Is it additive?"... does the additive have meanings? If not, it's not a fact. 
      <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
 
    - Use `Naive ETL`=> move From **3NF** to **Star**
