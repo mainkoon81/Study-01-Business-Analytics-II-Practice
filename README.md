@@ -224,7 +224,11 @@ DWH architecture varies depends on the answer of this question: `To what extent 
  - Online **Analytical** Process (OLAP) Cube
 <img src="https://user-images.githubusercontent.com/31917400/59842654-e0d07200-934e-11e9-83e9-cc7195e2a646.jpg" />
 
-1> It is an **aggregation** of a "fact metric" on a number of dimensions(by taking a combination of dimensions such as movie, country, month). It makes things easy to communicate to business(end) users. Once you build the cube, how to address them?  
+0> How to serve OLAP cube?
+ - method_A (**M..OLAP**): pre-aggregate OLAP cubes and save them on **special purpose non-relational database** ..Buy OLAP server?  
+ - method_B (**R..OLAP**): compute OLAP on the fly from the existing Relational Database where the dimensional models reside. 
+
+1> OLAP cube is an **aggregation** of a "fact metric" on a number of dimensions(by taking a combination of dimensions such as movie, country, month). It makes things easy to communicate to business(end) users. Once you build the cube, how to address them?  
  - General Operations: `Roll-Up`, `Drill-Down`, `Slice&Dice`
  - __Roll-Up__: Aggregates or combines values and reduces number of rows or columns.
  - __Drill-Down__: Decomposes values and increases number of rows or columns.
