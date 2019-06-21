@@ -135,8 +135,9 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
 <img src="https://user-images.githubusercontent.com/31917400/58917762-97adda80-871f-11e9-8114-6a340bb1e46d.jpg" />
 
 > Perspective 02 - **Technical** 
+- What is DWH? 
  - DWH is a `copy` of transaction data specifically **structured for** `query and analysis`. 
- - DWH is subject-oriented(categorized by topic), integrated(coming from many sources), non-volatile(non-transient), time-variant(changing questions by time) collection of data in support of management's decisions.
+ - DWH is subject-oriented(categorized by topic), integrated(coming from many sources), non-volatile(non-transient), time-variant(changing questions by time) collection of data in support of management's decisions. When the data is so large and diverse, databases cannot handle them because its too expensive, hard to query...we consider DWH?
  - DWH is a system retrieving and consolidating data periodically from the source systems into a dimensional, normalized data store. It keeps years of history. It is typically updated in batches, not every time a transaction happens in the source system. 
 <img src="https://user-images.githubusercontent.com/31917400/58919046-97fca480-8724-11e9-91db-6c44fde98fa1.jpg" />
 
@@ -164,10 +165,14 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
      - Load: Insert them into Fact / Dimension tables
 
 ## Data Warehouse Architecture Examples
- - > 1.Kimball's Bus
- - > 2.Data Marts
- - > 3.Inmon's Corporate Information Factory (CIF)
- - > 4.Hybrid of [Bus + CIF]
+- User: front_room
+- Data engineer: back_room
+ - > 1.Kimball's Bus: `User` cannot decide the schema organization
+ - > 2.Data Marts: `User` cannot decide the schema organization
+ - > 3.Inmon's Corporate Information Factory (CIF): `User` can decide the schema organization
+ - > 4.Hybrid of [Bus + CIF]: `User` can decide the schema organization
+
+DWH architecture varies depends on the answer of this question: `To what extent is data engineer(you) gonna let USERS decide how the data schemas are organized?`: The answer of this question will change ETL method as well.  
 
 ### 1. Kimball's Bus: 
 <img src="https://user-images.githubusercontent.com/31917400/59796328-218ba500-92d5-11e9-9c97-37727eacae75.jpg" />
