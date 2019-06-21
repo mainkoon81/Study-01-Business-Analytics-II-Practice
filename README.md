@@ -220,12 +220,31 @@ DWH architecture varies depends on the answer of this question: `To what extent 
  - W/O Data Marts!
 
 
-## At the end of the day, we want:  
+## At the end of the day, we want OLAP to `query`.  
  - Online **Analytical** Process (OLAP) Cube
 <img src="https://user-images.githubusercontent.com/31917400/59842654-e0d07200-934e-11e9-83e9-cc7195e2a646.jpg" />
 
-It is an **aggregation** of a "fact metric" on a number of dimensions(by taking a combination of dimensions such as movie, country, month). It makes things easy to communicate to business users. 
+1> It is an **aggregation** of a "fact metric" on a number of dimensions(by taking a combination of dimensions such as movie, country, month). It makes things easy to communicate to business(end) users. Once you build the cube, how to address them?  
  - General Operations: `Roll-Up`, `Drill-Down`, `Slice&Dice`
+ - __Roll-Up__: Aggregates or combines values and reduces number of rows or columns.
+ - __Drill-Down__: Decomposes values and increases number of rows or columns.
+ - __Slice__: Reducing N dimensions to N-1 dimensions by restricting one dimension to a single value (same cube with thinner depth)
+ - __Dice__: Same dimensions but computing a sub-cube by restricting, some of the values of the dimensions (smaller cube with same depth)
+
+2> OLAP cube query optimization
+ - Typically, the operations in real world setting are quite ad-hoc. 
+ - `Group by CUBE(dim01, dim02,..)` makes one dimension **pass through the Fact_table** and aggregates all possible combinations of groupings...=> No need to process the whole Fact_tables again and again. 
+ - forthcoming aggregations:
+   - total_dim(k)
+   - dim(k)by `dim01` -> dim(k)by `dim02` -> dim(k)by `dim03`....
+   - dim(k)by `dim01&dim02` -> dim(k)by `dim02&dim03`, ....
+   - dim(k)by `dim01&dim02&dim03&...`
+
+
+
+
+
+
  
 
 
