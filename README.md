@@ -172,7 +172,7 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
  - > 3.Inmon's Corporate Information Factory (CIF): `User` can decide the schema organization
  - > 4.Hybrid of [Bus + CIF]: `User` can decide the schema organization
 
-DWH architecture varies depends on the answer of this question: `To what extent is data engineer(you) gonna let USERS decide how the data schemas are organized?`: The answer of this question will change ETL method as well.  
+DWH architecture varies depends on the answer of this question: `To what extent is data engineer(you) gonna let USERS decide how the data schemas are organized?`: The answer will ultimately change **ETL method** in the Back_room. 
 
 ### 1. Kimball's Bus: 
 <img src="https://user-images.githubusercontent.com/31917400/59796328-218ba500-92d5-11e9-9c97-37727eacae75.jpg" />
