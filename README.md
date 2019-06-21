@@ -156,47 +156,69 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
        - Ask "Is it additive?"... does the additive have meanings? If not, it's not a fact. 
      <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
 
-   - Use `Naive ETL`=> move From **3NF** to **Star**
-     - Extract: Query the 3NF database
-     - Transform:
-       - JOIN tables
-       - Change data types
-       - Add new features
-     - Load: Insert them into Fact / Dimension tables
+ - `Naive ETL`=> move From **3NF** to **Star**
+   - Extract: Query the 3NF database
+   - Transform:
+     - JOIN tables
+     - Change data types
+     - Add new features
+   - Load: Structure and load the data into the dimensional data model(Fact / Dimension)
 
 ## Data Warehouse Architecture Examples
-- User: front_room
-- Data engineer: back_room
+- User: Front_Room
+- Data engineer: Back_Room(ETL process)
+
  - > 1.Kimball's Bus: `User` cannot decide the schema organization
- - > 2.Data Marts: `User` cannot decide the schema organization
+ - > 2.Data Marts: `User` can decide the schema organization
  - > 3.Inmon's Corporate Information Factory (CIF): `User` can decide the schema organization
  - > 4.Hybrid of [Bus + CIF]: `User` can decide the schema organization
 
-DWH architecture varies depends on the answer of this question: `To what extent is data engineer(you) gonna let USERS decide how the data schemas are organized?`: The answer will ultimately change **ETL method** in the Back_room. 
+DWH architecture varies depends on the answer of this question: `To what extent is data engineer(you) gonna let USERS decide how the data schemas are organized?`: The answer will ultimately decides different **ETL method** in the Back_Room - such as the way data stored.
 
 ### 1. Kimball's Bus: 
 <img src="https://user-images.githubusercontent.com/31917400/59796328-218ba500-92d5-11e9-9c97-37727eacae75.jpg" />
-   
-   - Use ETL => 
-     - Extract:
-       - Get the data from its source
-       - Delete old state
-     - Transform:
-       - Integrate many sources together.
-       - Produce diagnostic metadata.
-     - Load: 
-       - Structure and load the data into the dimensional data model. 
- - It results in a common dimension data model shared by different departmentsss!! (so 'sales analytics' and the 'delivery analytics' will both use the same data dimension). 
- - Data is kept at the atomic level, not at the aggregated level. 
   
-### 2. Independent Data Marts:
-<img src="https://user-images.githubusercontent.com/31917400/59797240-2fdac080-92d7-11e9-9e23-9296ef192814.jpg" />
+ - It results in a **common dimension data model** shared by different departmentsss!! (so 'sales analytics' and the 'delivery analytics' will both use the same data dimension). 
+ - Data is kept at the **atomic level**, not at the aggregated level.
+ - The **bus matrix** is given to Users?????  
+ 
+ - `Kimball's ETL` => Users cannot access the Back_Room work.
+   - Extract:
+     - Get the data from its source
+     - `Delete old state`
+   - Transform:
+     - `Integrate many sources together.`
+     - `Produce diagnostic **metadata**.`
+   - Load: Structure and load the data into the dimensional data model(Fact / Dimension). 
+
+  
+### 2. Data Marts:
+<img src="https://user-images.githubusercontent.com/31917400/59930327-a0e6b900-943a-11e9-9bda-9439ab86bed3.jpg" />
+
+ - Each department(User) has to deal with ETL directly without Data engineer's help. **NOT RECOMMENDED!!!**
+ - Anti-conformed dimension!: Under the hood, they would repeat each other's work, model the dimension differently...
+   - different Fact_table for the same event due to no-conformed dimension.
+   - Independent ETL, Dimensional model..so it will produce smaller separated dimension models.
+   - It emerged from the idea of `departmental autonomy`, but their uncoordinated effort can lead to inconsistent views. 
+   
+ - `Data Mart's ETL` => varies by each department!
 
 ### 3. Inmon's CIF
-<img src="https://user-images.githubusercontent.com/31917400/59800291-23a63180-92de-11e9-98b0-ad98d5f1beec.jpg" />
+<img src="https://user-images.githubusercontent.com/31917400/59930382-b52ab600-943a-11e9-88a6-581fd8d4f07e.jpg" />
+
+ - `Enterprise DWH` refers **Normalized part** in the CIF architecture. It can be accessed by END-Users if necessary. 
+ - It uses **Data Marts**! but they are already coordinated by `Enterprise DWH`. so..`departmental autonomy` works here!
+ - Unlike Kimball's model, data can be kept at the aggregated level. 
+ 
+ - `Inmon's ETL` => There are 2 ETL processes required here. 
+   - 1) Source transaction -> 3NF database(Enterprise DWH)
+   - 2) 3NF database(Enterprise DWH) -> Departmental Data Marts  
 
 ### 4. Bus + CIF
 <img src="https://user-images.githubusercontent.com/31917400/59800371-67993680-92de-11e9-8e4f-388021683bc2.jpg" />
+
+ - W/O Data Marts!
+
 
 ## At the end of the day, we want:  
  - Online **Analytical** Process (OLAP) Cube
