@@ -198,8 +198,8 @@ DWH architecture varies depends on the answer of this question: `To what extent 
 ### 4. Bus + CIF
 <img src="https://user-images.githubusercontent.com/31917400/59800371-67993680-92de-11e9-8e4f-388021683bc2.jpg" />
 
-
-## Online Analytical Process (OLAP) Cube
+## At the end of the day, we want:  
+ - Online **Analytical** Process (OLAP) Cube
 <img src="https://user-images.githubusercontent.com/31917400/59842654-e0d07200-934e-11e9-83e9-cc7195e2a646.jpg" />
 
 It is an **aggregation** of a "fact metric" on a number of dimensions(by taking a combination of dimensions such as movie, country, month). It makes things easy to communicate to business users. 
