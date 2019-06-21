@@ -149,9 +149,9 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
      <img src="https://user-images.githubusercontent.com/31917400/59024835-b230a280-884a-11e9-8493-b2595bfe0f68.jpg" />
 
    - Love star? then define first which is `dimension` / `fact`. And create **Dimension_table** and **Fact_table**.
-     - Dimension_table: 
+     - Dimension_table(Quality): 
        - Context(Attribute): who(customer name?), when(data or time), where(store name?), what(product name?),..
-     - Fact_table: 
+     - Fact_table(Quantity): 
        - Record in quantifiable metrics: quantity, duration, rate,..(explaining events numerically)
        - Ask "Is it additive?"... does the additive have meanings? If not, it's not a fact. 
      <img src="https://user-images.githubusercontent.com/31917400/59028364-61717780-8853-11e9-9720-587448b1ce76.jpg" />
