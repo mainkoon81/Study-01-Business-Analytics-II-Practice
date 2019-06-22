@@ -223,7 +223,7 @@ cur.execute("DROP table music_library")
 cur.close()
 conn.close()
 ```
-## Cassandra Basic: `session = cluster.connect()`
+## > Cassandra Basic: `session = cluster.connect()`
  - 1. Create a connection to the database
  - 2. Create a keyspace to the work in and connect to the keyspace
  - 3. Create a table(translate this information below into a Create Table Statement)
