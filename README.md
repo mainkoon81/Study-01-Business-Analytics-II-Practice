@@ -180,7 +180,7 @@ except psycopg2.Error as e:
 ```
 
 ## > PostgreSQL Basic: 2) `conn.close()` 
- - Close our connection to the default database, reconnect to the kimdb database, and get a new cursor.
+ - 0. Close our connection to the default database, reconnect to the kimdb database, and get a new cursor.
 ```
 try: 
     conn.close()
@@ -223,10 +223,56 @@ cur.execute("DROP table music_library")
 cur.close()
 conn.close()
 ```
+## Cassandra Basic: `session = cluster.connect()`
+ - 1. Create a connection to the database
+ - 2. Create a keyspace to the work in and connect to the keyspace
+ - 3. Create a table(translate this information below into a Create Table Statement)
+   - Table Name: music_library
+   - column 1: Album Name
+   - column 2: Artist Name
+   - column 3: Year 
+   - PRIMARY KEY(year, artist name)
+ - 4. Insert rows of data
+ - 5. validate the information
+ - 6. Drop the table to avoid duplicates and clean up
+```
+from cassandra.cluster import Cluster
+#1.
+clu = Cluster(['127.0.0.1'])
+# the connection_object
+session = clu.connect() 
+# no need to have cursor!!! or open session..or 
+session.execute("""select * from music_libary""")
+#2.
+session.execute("""CREATE KEYSPACE IF NOT EXISTS test_keyspace WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }""")
+session.set_keyspace('test_keyspace')
+#3.
+query = "CREATE TABLE IF NOT EXISTS music_library "
+query = query + "(year int, artist_name text, album_name text, PRIMARY KEY (year, artist_name))"
+try:
+    session.execute(query)
+except Exception as e:
+    print(e)
+#4.
+query = "INSERT INTO music_library (year, artist_name, album_name)"
+query = query + " VALUES (%s, %s, %s)"
+session.execute(query, (1970, "The Beatles", "Let it Be"))
+session.execute(query, (1965, "The Beatles", "Rubber Soul"))
+#5.
+query = 'SELECT * FROM music_library'
+rows = session.execute(query)
+for row in rows:
+    print (row.year, row.album_name, row.artist_name)
+#6.
+query = "drop table music_library"
+rows = session.execute(query)
+session.shutdown()
+cluster.shutdown()
+```
 
 -------------------------------------------------------------------------------------------------
 # Chapter 02. Data WareHousing
-> Perspective 01- **Business** (if you are in charge of a retailer’s data infrastructure?
+> Perspective 01- **Business** (if you are in charge of a retailer’s data infrastructure?)
  - See some business activities:
    - Customers should be able to find goods & make orders
    - Inventory Staff should be able to stock, retrieve, and re-order goods
