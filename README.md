@@ -294,8 +294,12 @@ cluster.shutdown()
    - JOINS on the database allow for outstanding flexibility but are extremely slow. If you are dealing with heavy reads on your database, you may want to think about denormalizing your tables. The denormalization comes after normalization.
  - We will have **full information** table specific to a particular topic.   
 
-## > Structuring database ii.(Fact & Dimension_table / star_schema)
-
+## > Structuring database ii.(star & snowflake)
+ - Star schema is the simplest style of **Data Mart**. It can consist of multiple **Fact_tables**(at the center) referencing any number of dimension tables (but it decrease the query flexibility).
+   - To get simpler queries 
+   - To denormalize
+   - To get faster aggregation
+ - Snowflake schema is more normalized version of Star schema(but only in 1NF/2NF)
 
 
 -------------------------------------------------------------------------------------------------
