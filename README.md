@@ -147,7 +147,82 @@ In Hadoop, one of the nice thing about using "Hadoop Streaming" is that it's eas
    - When you need the ability to do JOINS across tables: NoSQL does not allow the ability to do JOINS. This is not allowed as this will result in a full table scans.
    - When you want to be able to do aggregations and analytics
    - When you have changing business requirements : Ad-hoc queries are possible but difficult as the data model was done to fix particular queries
-   - When your queries are not available and you need the flexibility : You need your queries in advance. If those are not available or you will need to be able to have flexibility on how you query your data you might need to stick with a relational database
+   - When your queries are not available and you need the flexibility : You need your queries in advance. If those are not available or you will need to be able to have flexibility on how you query your data you might need to stick with a relational database.
+   
+## > PostgreSQL Basic: 1) `autocommit = True`
+ - 1. **Connect** to the local instance of PostgreSQL (127.0.0.1)
+ - 2. **Get a cursor** that will be used to execute queries
+ - 3. Create a database to work in
+ - 4. One action = one transaction...means we should run "commit" each transaction or getting a strange error.
+   - having to call `conn.commit()` after each command. The ability to rollback and commit transactions are a feature of Relational Databases. 
+ - 5. If you don't want, then do `autocommit` !!
+```
+## import postgreSQL adapter for the Python
+import psycopg2
+
+conn = psycopg2.connect("host=127.0.0.1 dbname=studentdb user=student password=student")
+cur = conn.cursor()
+# for example
+cur.execute("select * from old_table")
+conn.commit()
+# but...
+conn.set_session(autocommit=True)
+cur.execute("CREATE TABLE new_table (col1 int, col2 int, col3 int);")
+cur.execute("select count(*) from new_table")
+print(cur.fetchall())
+```
+ - 5. we can create new database as well.
+```
+try: 
+    cur.execute("create database kimdb")
+except psycopg2.Error as e:
+    print(e)
+```
+
+## > PostgreSQL Basic: 2) `conn.close()` 
+ - Close our connection to the default database, reconnect to the kimdb database, and get a new cursor.
+```
+try: 
+    conn.close()
+except psycopg2.Error as e:
+    print(e)
+  
+try: 
+    conn = psycopg2.connect("host=127.0.0.1 dbname=kimdb user=student password=student")
+except psycopg2.Error as e: 
+    print("Error: Could not make connection to the Postgres database")
+    print(e)
+    
+cur = conn.cursor()
+conn.set_session(autocommit=True)
+```
+ - 1. create a table...`IF NOT EXISTS`, `DROP table`,..
+   - Table Name: music_library
+   - column 1: Album Name
+   - column 2: Artist Name
+   - column 3: Year
+ - 2. Insert rows of data
+   - If you run the insert statement code more than once, you will see **duplicates** of your data.
+ - 3. Validate the information
+ - 4. Drop the table to avoid duplicates and clean up
+```
+#1.
+cur.execute("CREATE TABLE IF NOT EXISTS music_library (album_name varchar, artist_name varchar, year int);")
+#2.
+cur.execute("INSERT INTO music_library (album_name, artist_name, year) VALUES (%s, %s, %s)", ("Let It Be", "The Beatles", 1970))
+cur.execute("INSERT INTO music_library (album_name, artist_name, year) VALUES (%s, %s, %s)", ("Rubber Soul", "The Beatles", 1965))
+#3.
+cur.execute("SELECT * FROM music_library;")
+row = cur.fetchone()
+
+while row:
+    print(row)
+    row = cur.fetchone()
+#4.
+cur.execute("DROP table music_library")
+cur.close()
+conn.close()
+```
 
 -------------------------------------------------------------------------------------------------
 # Chapter 02. Data WareHousing
