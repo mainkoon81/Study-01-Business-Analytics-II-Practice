@@ -269,7 +269,7 @@ rows = session.execute(query)
 session.shutdown()
 cluster.shutdown()
 ```
-
+[For SQL]---------------------------------------------------------------------------------------------------------------------------
 ## > Structuring database i.(Normalization:`break`) / Denormalization:`JOIN more or less`)
 > Normalization(you will feel natural): `Faster Writing!`
  - To Free the database from unwanted insertrions, updates, deletion, etc.
@@ -300,6 +300,10 @@ cluster.shutdown()
    - To denormalize
    - To get faster aggregation
  - Snowflake schema is more normalized version of Star schema(but only in 1NF/2NF)
+
+[For NoSQL]-------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 -------------------------------------------------------------------------------------------------
