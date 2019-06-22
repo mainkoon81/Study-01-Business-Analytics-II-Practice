@@ -270,6 +270,15 @@ session.shutdown()
 cluster.shutdown()
 ```
 
+
+
+## Normalization / Denormalization
+
+
+## Fact & Dimension table / star schema
+
+
+
 -------------------------------------------------------------------------------------------------
 # Chapter 02. Data WareHousing
 > Perspective 01- **Business** (if you are in charge of a retailer’s data infrastructure?)
