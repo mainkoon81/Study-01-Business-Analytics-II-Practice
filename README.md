@@ -271,11 +271,10 @@ cluster.shutdown()
 ```
 
 
+## > Structuring database i.(Normalization / Denormalization)
 
-## Normalization / Denormalization
 
-
-## Fact & Dimension table / star schema
+## > Structuring database ii.(Fact & Dimension_table / star_schema)
 
 
 
