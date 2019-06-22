@@ -270,9 +270,29 @@ session.shutdown()
 cluster.shutdown()
 ```
 
+## > Structuring database i.(Normalization:`break`) / Denormalization:`JOIN more or less`)
+> Normalization(you will feel natural): `Faster Writing!`
+ - To Free the database from unwanted insertrions, updates, deletion, etc.
+   - Reduce **data redundancy**
+     - (kill copies) 
+ - To Reduce the need for refactoring the database as new data are introduced???
+ - To Make the database neutral to the query statistics(NOT to focus on a particular query).
+   - Increase **data integrity**
+     - (increase the likelihood that data is correct in all locations) 
+ - Normal form(1NF, 2NF, 3NF)
+   - 1NF: Atomic values
+   - 2NF: All columns in the table must rely on the **Primary Key**
+     - primary: unique
+     - foreign: Not unique, but it can be primary for other tables.
+   - 3NF: No transitive dependencies
+     - When getting from A-> C, you want to avoid going through B.
+     - we use 3NF because when updating data, we want to be able to do in just 1 place.
 
-## > Structuring database i.(Normalization / Denormalization)
-
+> Denormalization(you will feel unnatural): `Faster Reading!`
+ - To Increase performance in case of heavy **READING** workload..
+   - Duplicate the copies of data for some reason such as JOINS? 
+   - JOINS on the database allow for outstanding flexibility but are extremely slow. If you are dealing with heavy reads on your database, you may want to think about denormalizing your tables. The denormalization comes after normalization.
+ - We will have **full information** table specific to a particular topic.   
 
 ## > Structuring database ii.(Fact & Dimension_table / star_schema)
 
