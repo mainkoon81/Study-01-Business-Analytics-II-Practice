@@ -281,7 +281,7 @@ cluster.shutdown()
  - > 4.Durablity: 
    - Once a transaction is committed, it will persist and will not be undone to accommodate conflicts with other operations. Many argue that this implies the transaction is on disk as well; most formal definitions aren’t specific.
 
-## > Structuring database i.(Normalization:`break`) / Denormalization:`JOIN more or less`)
+## > Structuring database with SQL(i)--(Normalization:`break`) / Denormalization:`JOIN more or less`)
 > Normalization(you will feel natural): `Faster Writing!`
  - To Free the database from unwanted insertrions, updates, deletion, etc.
    - Reduce **data redundancy**
@@ -305,7 +305,7 @@ cluster.shutdown()
    - JOINS on the database allow for outstanding flexibility but are extremely slow. If you are dealing with heavy reads on your database, you may want to think about denormalizing your tables. The denormalization comes after normalization.
  - We will have **full information** table specific to a particular topic.   
 
-## > Structuring database ii.(star & snowflake)
+## > Structuring database with SQL(ii)--(star & snowflake)
  - Star schema is the simplest style of **Data Mart**. It can consist of multiple **Fact_tables**(at the center) referencing any number of dimension tables (but it decrease the query flexibility).
    - To get simpler queries 
    - To denormalize
@@ -317,16 +317,17 @@ cluster.shutdown()
  - > 1.Consistency: 
    - Every read from the database gets the latest (and correct) piece of data or an error
  - > 2.Availability: 
-   - Every request is received and a response is given -- without a guarantee that the data is the latest update
+   - Every request is received and a response is given (without a guarantee that the data is the latest update)
  - > 3.Partition Tolerance: 
    - The system continues to work regardless of losing network connectivity between nodes 
 
+## > Structuring database with Cassandra(i)--(Denormalization:`There are no JOIN, GROUP BY ??`)
+ - Denormalization is not just okay..**it's a must**. Denormalization must be done for fast reads
+ - Apache Cassandra has been optimized for **fast writes**
+ - ALWAYS think Queries first. It does not allow for JOINs between tables. ASK first: `What queries will be perfomed on that data?`
+ - **One table per query** is a great strategy
 
-
-
-
-
-
+> In Apache Cassandra, if your business need calls for quickly changing requirements, you need to create a new table to process the data. If your business needs calls for ad-hoc queries, these are not a strength of Apache Cassandra. However keep in mind that it is easy to create a new table that will fit your new query
 
 
 
