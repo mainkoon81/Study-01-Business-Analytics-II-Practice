@@ -329,6 +329,12 @@ cluster.shutdown()
 
 > In Apache Cassandra, if your business need calls for quickly changing requirements, you need to create a new table to process the data. If your business needs calls for ad-hoc queries, these are not a strength of Apache Cassandra. However keep in mind that it is easy to create a new table that will fit your new query
 
+## > PRIMARY KEY(unique but simple/composite) in Cassandra
+ - The **PRIMARY KEY** is made up of either just the `PARTITION KEY` or may also include additional `CLUSTERING COLUMNS`.
+ - A Simple **PRIMARY KEY** is just one column that is also the `PARTITION KEY`. A Composite **PRIMARY KEY** is made up of more than one column and will assist in creating a unique value and in your retrieval queries
+ - The `PARTITION KEY` will determine the distribution of data across the system
+
+## > Apache Cassandra does not allow for duplicated data in the rows.
 
 
 -------------------------------------------------------------------------------------------------
