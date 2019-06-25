@@ -336,7 +336,7 @@ cluster.shutdown()
  - A Simple **PRIMARY KEY** is just one column that is also the `PARTITION KEY`. 
  - A Composite **PRIMARY KEY** is made up of more than one column and will assist in creating a unique value and in your retrieval queries.
    - The `PARTITION KEY` will determine the distribution of data across the system.
-   - The `clustering column` will sort the data in sorted descending order in the table.
+   - The `clustering column` will sort the data in sorted ascending order(or alphabetical) in the table.
    - More than one `clustering column` can be added (or none!).
    - From there, the `clustering columns` will sort in order of **how they were added to the primary key**.
      - You can use as many `clustering columns` as you would like. You cannot use the `clustering columns` out of order in the **SELECT statement**. You may choose to omit using a `clustering column` in your **SELECT statement**. That's OK. Just remember to use them in order when you are using the **SELECT statement**.
