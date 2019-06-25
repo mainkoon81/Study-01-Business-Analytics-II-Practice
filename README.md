@@ -339,6 +339,8 @@ cluster.shutdown()
    - The `clustering column` will sort the data in sorted ascending order(or alphabetical) in the table.
    - More than one `clustering column` can be added (or none!).
    - From there, the `clustering columns` will sort in order of **how they were added to the primary key**.
+   <img src="https://user-images.githubusercontent.com/31917400/60138535-a3cb0c00-97a2-11e9-959a-ce4b0828b213.jpg" />
+
      - You can use as many `clustering columns` as you would like. You cannot use the `clustering columns` out of order in the **SELECT statement**. You may choose to omit using a `clustering column` in your **SELECT statement**. That's OK. Just remember to use them in order when you are using the **SELECT statement**.
 
 ## > Apache Cassandra does not allow for duplicated data in the rows.
