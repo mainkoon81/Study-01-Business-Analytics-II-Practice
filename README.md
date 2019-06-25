@@ -271,6 +271,16 @@ session.shutdown()
 cluster.shutdown()
 ```
 [For SQL]---------------------------------------------------------------------------------------------------------------------------
+## ACID theorem:
+ - > 1.Atomicity: 
+   - All components of a transaction are treated as a single action. All are completed or none are; if one part of a transaction fails, the database’s state is unchanged.
+ - > 2.Consistency: 
+   - Transactions must follow the defined rules and restrictions of the database, e.g., constraints, cascades, and triggers. Thus, any data written to the database must be valid and any transaction that completes will change the state of the database. No transaction can create an invalid data state. Note that this is different from “consistency” as it’s defined in the CAP theorem.
+ - > 3.Isolation: 
+   - Fundamental to achieving concurrency control, isolation ensures that the concurrent execution of transactions results in a system state that would be obtained if transactions were executed serially, i.e., one after the other. With isolation, an incomplete transaction cannot affect another incomplete transaction.
+ - > 4.Durablity: 
+   - Once a transaction is committed, it will persist and will not be undone to accommodate conflicts with other operations. Many argue that this implies the transaction is on disk as well; most formal definitions aren’t specific.
+
 ## > Structuring database i.(Normalization:`break`) / Denormalization:`JOIN more or less`)
 > Normalization(you will feel natural): `Faster Writing!`
  - To Free the database from unwanted insertrions, updates, deletion, etc.
@@ -303,7 +313,13 @@ cluster.shutdown()
  - Snowflake schema is more normalized version of Star schema(but only in 1NF/2NF)
 
 [For NoSQL]-------------------------------------------------------------------------------------------------------------------------
-## > Structuring database i. 
+## CAP Theorem:
+ - > 1.Consistency: 
+   - Every read from the database gets the latest (and correct) piece of data or an error
+ - > 2.Availability: 
+   - Every request is received and a response is given -- without a guarantee that the data is the latest update
+ - > 3.Partition Tolerance: 
+   - The system continues to work regardless of losing network connectivity between nodes 
 
 
 
