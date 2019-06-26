@@ -224,6 +224,39 @@ cur.execute("DROP table music_library")
 cur.close()
 conn.close()
 ```
+## > PostgreSQL Basic: 3) The `CREATE statement` in SQL has a few important constraints
+1. `NOT NULL`
+```
+CREATE TABLE IF NOT EXISTS customer_transactions (customer_id int NOT NULL, store_id int, spent numeric);
+```
+ - The `NOT NULL` constraint indicates that the column cannot contain a null value.
+ - You can add `NOT NULL` constraints to more than one column. Usually this occurs when you have a `COMPOSITE KEY`.
+
+2. `UNIQUE`
+```
+CREATE TABLE IF NOT EXISTS customer_transactions ( customer_id int NOT NULL UNIQUE, store_id int NOT NULL UNIQUE, spent numeric );
+# OR
+CREATE TABLE IF NOT EXISTS customer_transactions ( customer_id int NOT NULL, store_id int NOT NULL, spent numeric, UNIQUE (customer_id, store_id, spent) );
+```
+ - The `UNIQUE` constraint is used to specify that the data across all the rows in one column are unique within the table. the `UNIQUE` constraint can also be used for multiple columns, so that the combination of the values across those columns will be unique within the table.
+
+3. `PRIMARY KEY`
+```
+CREATE TABLE IF NOT EXISTS store ( store_id int PRIMARY KEY, store_location_city text, store_location_state text );
+```
+ - The `PRIMARY KEY` constraint is defined on a single column, and every table should contain a primary key. The values in this column uniquely identify the rows in the table. If a group of columns are defined as a primary key, they are called a composite key. That means the combination of values in these columns will uniquely identify the rows in the table. By default, the `PRIMARY KEY` constraint has the `unique` and `not null` constraint built into it.
+
+ - an example for a group of columns serving as composite key:
+ ```
+ CREATE TABLE IF NOT EXISTS customer_transactions ( customer_id int, store_id int, spent numeric, PRIMARY KEY (customer_id, store_id) );
+ ```
+## > PostgreSQL Basic: 4) UPSERT(updating & inserting) in SQL
+In RDBMS language, the term upsert refers to the idea of `inserting a new row in an existing table`, or `updating the row if it already exists in the table`. The way this is handled in PostgreSQL is by using the `INSERT statement` in combination with the `ON CONFLICT` clause.
+
+
+
+
+
 ## > Cassandra Basic: `session = cluster.connect()`
  - 1. Create a connection to the database
  - 2. Create a keyspace to the work in and connect to the keyspace
