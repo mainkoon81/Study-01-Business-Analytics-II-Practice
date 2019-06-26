@@ -251,11 +251,26 @@ CREATE TABLE IF NOT EXISTS store ( store_id int PRIMARY KEY, store_location_city
  CREATE TABLE IF NOT EXISTS customer_transactions ( customer_id int, store_id int, spent numeric, PRIMARY KEY (customer_id, store_id) );
  ```
 ## > PostgreSQL Basic: 4) UPSERT(updating & inserting) in SQL
-In RDBMS language, the term upsert refers to the idea of `inserting a new row in an existing table`, or `updating the row if it already exists in the table`. The way this is handled in PostgreSQL is by using the `INSERT statement` in combination with the `ON CONFLICT` clause.
+In RDBMS language, the term **upsert** refers to the idea of `inserting a new row in an existing table`, or `updating the row if it already exists in the table`. The way this is handled in PostgreSQL is by using the `INSERT statement` in combination with the `ON CONFLICT` clause.
+```
+CREATE TABLE IF NOT EXISTS customer_address (
+    customer_id int PRIMARY KEY, 
+    customer_street varchar NOT NULL,
+    customer_city text NOT NULL,
+    customer_state text NOT NULL
+);
 
-
-
-
+# insert data into it by adding a new row
+INSERT INTO customer_address (customer_id, customer_street, customer_city, customer_state) VALUES (432, '758 Main Street', 'Chicago', 'IL');
+```
+let's assume that the customer moved and we need to update the customer's address. However we do not want to add a new customer id. In other words, if there is any conflict on the customer_id, we do not want that to change. This would be a good candidate for using the `ON CONFLICT DO NOTHING` clause.
+```
+INSERT INTO customer_address (customer_id, customer_street, customer_city, customer_state) VALUES (432, '923 Knox Street', 'Albany', 'NY') ON CONFLICT (customer_id) DO NOTHING;
+```
+let's imagine we want to add more details in the existing address for an existing customer. This would be a good candidate for using the `ON CONFLICT DO UPDATE` clause.
+```
+INSERT INTO customer_address (customer_id, customer_street) VALUES (432, '923 Knox Street, Suite 1') ON CONFLICT (customer_id) DO UPDATE SET customer_street  = EXCLUDED.customer_street;
+```
 
 ## > Cassandra Basic: `session = cluster.connect()`
  - 1. Create a connection to the database
