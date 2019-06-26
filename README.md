@@ -247,6 +247,8 @@ session.execute("""select * from music_libary""")
 #2.
 session.execute("""CREATE KEYSPACE IF NOT EXISTS test_keyspace WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }""")
 session.set_keyspace('test_keyspace')
+
+
 #3.
 query = "CREATE TABLE IF NOT EXISTS music_library "
 query = query + "(year int, artist_name text, album_name text, PRIMARY KEY (year, artist_name))"
@@ -265,7 +267,7 @@ rows = session.execute(query)
 for row in rows:
     print (row.year, row.album_name, row.artist_name)
 #6.
-query = "drop table music_library"
+query = "DROP table music_library"
 rows = session.execute(query)
 session.shutdown()
 cluster.shutdown()
