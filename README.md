@@ -524,7 +524,8 @@ DWH architecture varies depends on the answer of this question: `To what extent 
 
 
 
-
+-------------------------------------------------------------------------------------------------
+# Chapter 03. Data Lake & Analysis
 
  
 
