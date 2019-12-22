@@ -544,15 +544,14 @@ __Apache Spark Framework:__ As another big data framework, Spark contains **libr
 
 Spark is meant for big data sets that cannot fit on one computer. But you don't need Spark if you are working on smaller datasets. In the cases of datasets that can fit on your local computer, by default, the Python pandas library will read in an entire dataset from disk into memory. If the dataset is larger than your computer's memory, the program won't work. However, the Python pandas library can read in a file in smaller chunks. Thus, if you were going to calculate summary statistics about the dataset such as a sum or count, you could read in a part of the dataset at a time and accumulate the sum or count. If the data is already stored in a relational database such as MySQL or Postgres, you can leverage SQL to extract, filter and aggregate the data. If you would like to leverage pandas and SQL simultaneously, you can use libraries such as SQLAlchemy, which provides an abstraction layer to manipulate SQL tables with generative Python expressions. The limitation of Spark is its selection of machine learning algorithms. Currently, Spark only supports algorithms that scale linearly with the input data size. In general, deep learning is not available either, though there are many projects integrate Spark with Tensorflow and other deep learning tools.
 
-__MapReduce__
-<img src="https://user-images.githubusercontent.com/31917400/71324309-5ae7dc00-24d5-11ea-9399-f71ae8c9bf65.jpg" />
-
 __Map-Reduce in Spark:__ The technique MP works by first dividing up a large dataset and distributing the data across a cluster. While Spark doesn't implement MapReduce, we can write Spark programs that behave in a similar way to the map-reduce paradigm. 
  - In the MAP step, each data is analyzed and converted into a (key, value) pair. 
  - Then these key-value pairs are shuffled across the cluster so that all keys are on the same machine. 
    - Shuffling in mapreduce refers to bringing all of the data with the same key together.
    - Data pt with the same key get moved to the same cluster node.
  - In the REDUCE step, the values with the same keys are combined together, and go through some mathematical operations.
+__MapReduce__
+<img src="https://user-images.githubusercontent.com/31917400/71324309-5ae7dc00-24d5-11ea-9399-f71ae8c9bf65.jpg" />
 
 __Wrangling with Spark:__ 
 
