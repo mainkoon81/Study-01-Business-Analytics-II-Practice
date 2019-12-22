@@ -550,7 +550,6 @@ __Map-Reduce in Spark:__ The technique MP works by first dividing up a large dat
    - Shuffling in mapreduce refers to bringing all of the data with the same key together.
    - Data pt with the same key get moved to the same cluster node.
  - In the REDUCE step, the values with the same keys are combined together, and go through some mathematical operations.
-__MapReduce__
 <img src="https://user-images.githubusercontent.com/31917400/71324309-5ae7dc00-24d5-11ea-9399-f71ae8c9bf65.jpg" />
 
 __Wrangling with Spark:__ 
