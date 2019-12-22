@@ -543,8 +543,11 @@ As Hadoop matured, other tools were developed to make Hadoop easier to work with
    - Data streaming is a specialized topic in big data. The use case is when you want to store and analyze data in **real-time** such as Facebook posts or Twitter tweets.
 
 __Apache Spark Framework:__ As another big data framework, Spark contains **libraries** for data analysis, machine learning, graph analysis, and streaming live data. The major difference between Spark and Hadoop is **how they use memory**. Hadoop writes intermediate results to disk whereas Spark tries to keep data in memory whenever possible. This makes Spark faster for many use cases. Another difference is that while Hadoop ecosystem includes a distributed file storage(HDFS), Spark does not include a file storage system. You can use Spark on top of HDFS but you do not have to. **Spark can read in data from other sources** as well such as Amazon S3.
- 
-__Map-Reudce in Spark:__ The technique MP works by first dividing up a large dataset and distributing the data across a cluster. While Spark doesn't implement MapReduce, we can write Spark programs that behave in a similar way to the map-reduce paradigm. 
+
+__MapReduce__
+<img src="https://user-images.githubusercontent.com/31917400/71324309-5ae7dc00-24d5-11ea-9399-f71ae8c9bf65.jpg" />
+
+__Map-Reduce in Spark:__ The technique MP works by first dividing up a large dataset and distributing the data across a cluster. While Spark doesn't implement MapReduce, we can write Spark programs that behave in a similar way to the map-reduce paradigm. 
  - In the MAP step, each data is analyzed and converted into a (key, value) pair. 
  - Then these key-value pairs are shuffled across the cluster so that all keys are on the same machine. 
    - Shuffling in mapreduce refers to bringing all of the data with the same key together.
