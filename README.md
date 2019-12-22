@@ -528,8 +528,6 @@ DWH architecture varies depends on the answer of this question: `To what extent 
 # Chapter 03. Data Lake & Analysis
 Transferring data **across a network**, ie between computers, is the biggest bottleneck when working with big data. One of the advantages of Spark is that it only shuffles data between computers when it absolutely has to.
 <img src="https://user-images.githubusercontent.com/31917400/71324126-f9267280-24d2-11ea-949f-940a5b3af2dd.jpg" />
- 
-By default, the Python pandas library will read in an entire dataset from disk into memory. If the dataset is larger than your computer's memory, the program won't work. However, the Python pandas library can read in a file in smaller chunks. Thus, if you were going to calculate summary statistics about the dataset such as a sum or count, you could read in a part of the dataset at a time and accumulate the sum or count.
 
 __Hadoop Framework__: Hadoop is an `ecosystem of tools` for big data storage and data analysis. Hadoop is an older system than Spark but is still used by many companies. 
  - Hadoop MapReduce: a system for processing and analyzing large data sets in parallel.
@@ -544,6 +542,8 @@ As Hadoop matured, other tools were developed to make Hadoop easier to work with
 
 __Apache Spark Framework:__ As another big data framework, Spark contains **libraries** for data analysis, machine learning, graph analysis, and streaming live data. The major difference between Spark and Hadoop is **how they use memory**. Hadoop writes intermediate results to disk whereas Spark tries to keep data in memory whenever possible. This makes Spark faster for many use cases. Another difference is that while Hadoop ecosystem includes a distributed file storage(HDFS), Spark does not include a file storage system. You can use Spark on top of HDFS but you do not have to. **Spark can read in data from other sources** as well such as Amazon S3.
 
+Spark is meant for big data sets that cannot fit on one computer. But you don't need Spark if you are working on smaller datasets. In the cases of datasets that can fit on your local computer, by default, the Python pandas library will read in an entire dataset from disk into memory. If the dataset is larger than your computer's memory, the program won't work. However, the Python pandas library can read in a file in smaller chunks. Thus, if you were going to calculate summary statistics about the dataset such as a sum or count, you could read in a part of the dataset at a time and accumulate the sum or count. If the data is already stored in a relational database such as MySQL or Postgres, you can leverage SQL to extract, filter and aggregate the data. If you would like to leverage pandas and SQL simultaneously, you can use libraries such as SQLAlchemy, which provides an abstraction layer to manipulate SQL tables with generative Python expressions. The limitation of Spark is its selection of machine learning algorithms. Currently, Spark only supports algorithms that scale linearly with the input data size. In general, deep learning is not available either, though there are many projects integrate Spark with Tensorflow and other deep learning tools.
+
 __MapReduce__
 <img src="https://user-images.githubusercontent.com/31917400/71324309-5ae7dc00-24d5-11ea-9399-f71ae8c9bf65.jpg" />
 
@@ -554,6 +554,7 @@ __Map-Reduce in Spark:__ The technique MP works by first dividing up a large dat
    - Data pt with the same key get moved to the same cluster node.
  - In the REDUCE step, the values with the same keys are combined together, and go through some mathematical operations.
 
+__Wrangling with Spark:__ 
 
 
 
