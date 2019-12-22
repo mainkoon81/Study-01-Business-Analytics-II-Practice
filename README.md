@@ -526,8 +526,30 @@ DWH architecture varies depends on the answer of this question: `To what extent 
 
 -------------------------------------------------------------------------------------------------
 # Chapter 03. Data Lake & Analysis
-
+Transferring data **across a network**, ie between computers, is the biggest bottleneck when working with big data. One of the advantages of Spark is that it only shuffles data between computers when it absolutely has to.
+<img src="https://user-images.githubusercontent.com/31917400/71324126-f9267280-24d2-11ea-949f-940a5b3af2dd.jpg" />
  
+By default, the Python pandas library will read in an entire dataset from disk into memory. If the dataset is larger than your computer's memory, the program won't work. However, the Python pandas library can read in a file in smaller chunks. Thus, if you were going to calculate summary statistics about the dataset such as a sum or count, you could read in a part of the dataset at a time and accumulate the sum or count.
+
+__Hadoop Framework__: Hadoop is an `ecosystem of tools` for big data storage and data analysis. Hadoop is an older system than Spark but is still used by many companies. 
+ - Hadoop MapReduce: a system for processing and analyzing large data sets in parallel.
+ - Hadoop YARN: a resource manager that schedules jobs across a cluster. The manager keeps track of what computer resources are available and then assigns those resources to specific tasks.
+ - Hadoop Distributed File System (HDFS): a big data storage system that splits data into chunks and stores the chunks across a cluster of computers.
+
+As Hadoop matured, other tools were developed to make Hadoop easier to work with. These tools included:
+ - Apache Pig: SQL-like language that runs on top of Hadoop MapReduce...for cleaning
+ - Apache Hive: SQL-like interface that runs on top of Hadoop MapReduce...for SQL query
+ - Apache Storm: With some real-time live data, to get result in milliseconds...for Data Streaming
+   - Data streaming is a specialized topic in big data. The use case is when you want to store and analyze data in **real-time** such as Facebook posts or Twitter tweets.
+
+__Apache Spark Framework:__ As another big data framework, Spark contains **libraries** for data analysis, machine learning, graph analysis, and streaming live data. The major difference between Spark and Hadoop is **how they use memory**. Hadoop writes intermediate results to disk whereas Spark tries to keep data in memory whenever possible. This makes Spark faster for many use cases. Another difference is that while Hadoop ecosystem includes a distributed file storage(HDFS), Spark does not include a file storage system. You can use Spark on top of HDFS but you do not have to. **Spark can read in data from other sources** as well such as Amazon S3.
+ 
+__Map-Reudce in Spark:__ The technique MP works by first dividing up a large dataset and distributing the data across a cluster. While Spark doesn't implement MapReduce, we can write Spark programs that behave in a similar way to the map-reduce paradigm. 
+ - In the MAP step, each data is analyzed and converted into a (key, value) pair. 
+ - Then these key-value pairs are shuffled across the cluster so that all keys are on the same machine. 
+   - Shuffling in mapreduce refers to bringing all of the data with the same key together.
+   - Data pt with the same key get moved to the same cluster node.
+ - In the REDUCE step, the values with the same keys are combined together, and go through some mathematical operations.
 
 
 
